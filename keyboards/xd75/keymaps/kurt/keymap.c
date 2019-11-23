@@ -19,6 +19,7 @@
 // Layer shorthand
 enum layers {
     _COLEMAK,
+    _COLEMAK_FKEYS,
     _GAMING,
     _NAV,
     _NUM,
@@ -32,6 +33,7 @@ enum custom_keycodes {
   MY_CIRC = SAFE_RANGE,
   MY_GRV,
   ALT_TAB,
+  FKEYLCK,
 };
 
 // Layer switching
@@ -56,6 +58,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Base layer (COLEMAK)
   [_COLEMAK] = LAYOUT_ortho_5x15(
     DE_1,    DE_2,    DE_3,    DE_4,    DE_5,    DE_6,    DE_7,    DE_8,    DE_9,    DE_0,    DE_EQL,  DE_SLSH, DE_PLUS, DE_QUOT, DE_DQOT,
+    KC_ESC,  DE_Q,    DE_W,    DE_F,    DE_P,    DE_B,    KC_PGUP, KC_DEL,  KC_HOME, DE_J,    DE_L,    DE_U,    DE_Y,    KC_BSPC, KC_DEL,
+    KC_TAB,  DE_A,    DE_R,    DE_S,    DE_T,    DE_G,    KC_PGDN, KC_UP,   KC_END,  DE_M,    DE_N,    DE_E,    DE_I,    DE_O,    KC_ENT,
+    KC_LSFT, DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,    KC_LEFT, KC_DOWN, KC_RGHT, DE_K,    DE_H,    DE_COMM, DE_DOT,  DE_MINS, KC_RSFT,
+    FN,      KC_LALT, KC_APP,  KC_LGUI, NUM,     KC_LCTL, KC_LSFT, KC_PSCR, KC_RSFT, KC_SPC,  NAV,     DE_AE,   DE_OE,   DE_UE,   DE_SS
+  ),
+
+
+  // Alternate Base layer with F-keys instead of a number row
+  [_COLEMAK_FKEYS] = LAYOUT_ortho_5x15(
+    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  DE_PLUS, DE_QUOT, DE_DQOT,
     KC_ESC,  DE_Q,    DE_W,    DE_F,    DE_P,    DE_B,    KC_PGUP, KC_DEL,  KC_HOME, DE_J,    DE_L,    DE_U,    DE_Y,    KC_BSPC, KC_DEL,
     KC_TAB,  DE_A,    DE_R,    DE_S,    DE_T,    DE_G,    KC_PGDN, KC_UP,   KC_END,  DE_M,    DE_N,    DE_E,    DE_I,    DE_O,    KC_ENT,
     KC_LSFT, DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,    KC_LEFT, KC_DOWN, KC_RGHT, DE_K,    DE_H,    DE_COMM, DE_DOT,  DE_MINS, KC_RSFT,
@@ -109,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_VOLU, KC_MPRV, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_CAPS, KC_PSCR, KC_INS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
     KC_VOLD, KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
     KC_MUTE, KC_MPLY, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, MO(_RESET)
+    _______, FKEYLCK, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, MO(_RESET)
   ),
 
 
@@ -177,6 +189,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_TAB);
             }
             return true;
+        case FKEYLCK:
+            // Switch between a number row and F-Keys
+            // Toggle between two base layers and persist them
+            if (record->event.pressed) {
+                uint8_t default_layer = eeconfig_read_default_layer();
+                if (default_layer & (1UL << _COLEMAK)) {
+                    set_single_persistent_default_layer(_COLEMAK_FKEYS);
+                } else {
+                    set_single_persistent_default_layer(_COLEMAK);
+                }
+            }
+            return false;
     }
     return true;
 }
@@ -184,8 +208,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // Initialization on startup
 void keyboard_post_init_user(void) {
-    // Set default layer
-    default_layer_set(1U<<_COLEMAK);
 }
 
 
