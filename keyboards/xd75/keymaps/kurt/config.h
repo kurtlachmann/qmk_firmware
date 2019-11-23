@@ -1,4 +1,4 @@
-/* Copyright 2017 Benjamin Kesselring
+/* Copyright 2019 Kurt Lachmann
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,4 +16,24 @@
 
 #pragma once
 
-// place overrides here
+// Use constant cursor speed
+#define MK_3_SPEED
+
+// Enable momentary cursor speed selection (i.e. hold down speed keys)
+#define MK_MOMENTARY_ACCEL
+
+// Default cursor speed
+#define MK_C_OFFSET_UNMOD 3 // Cursor offset per movement
+#define MK_C_INTERVAL_UNMOD 16 // Time between cursor movements in ms
+
+// KC_ACL0
+#define MK_C_OFFSET_0 1
+#define MK_C_INTERVAL_0 16
+
+// KC_ACL1
+#define MK_C_OFFSET_1 8
+#define MK_C_INTERVAL_1 16
+
+// KC_ACL2
+#define MK_C_OFFSET_2 32
+#define MK_C_INTERVAL_2 16
