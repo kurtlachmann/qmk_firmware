@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  DE_Q,    DE_W,    DE_F,    DE_P,    DE_B,    KC_PGUP, KC_DEL,  KC_HOME, DE_J,    DE_L,    DE_U,    DE_Y,    KC_BSPC, KC_DEL,
     KC_TAB,  DE_A,    DE_R,    DE_S,    DE_T,    DE_G,    KC_PGDN, KC_UP,   KC_END,  DE_M,    DE_N,    DE_E,    DE_I,    DE_O,    KC_ENT,
     KC_LSFT, DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,    KC_LEFT, KC_DOWN, KC_RGHT, DE_K,    DE_H,    DE_COMM, DE_DOT,  DE_MINS, KC_RSFT,
-    FN,      KC_LALT, KC_APP,  KC_LGUI, NUM,     KC_LCTL, KC_LSFT, KC_PSCR, KC_RSFT, KC_SPC,  NAV,     DE_AE,   DE_OE,   DE_UE,   DE_SS
+    FN,      KC_LALT, KC_LCTL, KC_LGUI, NUM,     KC_LCTL, KC_LSFT, KC_PSCR, KC_RSFT, KC_SPC,  NAV,     DE_AE,   DE_OE,   DE_UE,   DE_SS
   ),
 
 
@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  DE_Q,    DE_W,    DE_F,    DE_P,    DE_B,    KC_PGUP, KC_DEL,  KC_HOME, DE_J,    DE_L,    DE_U,    DE_Y,    KC_BSPC, KC_DEL,
     KC_TAB,  DE_A,    DE_R,    DE_S,    DE_T,    DE_G,    KC_PGDN, KC_UP,   KC_END,  DE_M,    DE_N,    DE_E,    DE_I,    DE_O,    KC_ENT,
     KC_LSFT, DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,    KC_LEFT, KC_DOWN, KC_RGHT, DE_K,    DE_H,    DE_COMM, DE_DOT,  DE_MINS, KC_RSFT,
-    FN,      KC_LALT, KC_APP,  KC_LGUI, NUM,     KC_LCTL, KC_LSFT, KC_PSCR, KC_RSFT, KC_SPC,  NAV,     DE_AE,   DE_OE,   DE_UE,   DE_SS
+    FN,      KC_LALT, KC_LCTL, KC_LGUI, NUM,     KC_LCTL, KC_LSFT, KC_PSCR, KC_RSFT, KC_SPC,  NAV,     DE_AE,   DE_OE,   DE_UE,   DE_SS
   ),
 
 
