@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Navigation
 [_NAV] = LAYOUT_planck_grid(
-    _______, DE_LESS, DE_MORE, DE_LCBR, DE_RCBR, XXXXXXX, XXXXXXX, XXXXXXX, KC_UP,   CTLPGUP, CTLPGDN, _______,
+    _______, DE_LESS, DE_MORE, DE_LCBR, DE_RCBR, XXXXXXX, XXXXXXX, KC_APP,  KC_UP,   CTLPGUP, CTLPGDN, _______,
     _______, DE_LBRC, DE_RBRC, DE_LPRN, DE_RPRN, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  _______,
     _______, DE_PIPE, DE_BSLS, DE_AMPR, DE_TILD, XXXXXXX, XXXXXXX, KC_HOME, KC_BSPC, KC_DEL,  KC_SPC,  _______,
     XXXXXXX, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
