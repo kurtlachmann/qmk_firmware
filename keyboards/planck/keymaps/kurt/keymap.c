@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NAV] = LAYOUT_planck_grid(
     _______, DE_LESS, DE_MORE, DE_LCBR, DE_RCBR, XXXXXXX, XXXXXXX, XXXXXXX, KC_UP,   CTLPGUP, CTLPGDN, _______,
     _______, DE_LBRC, DE_RBRC, DE_LPRN, DE_RPRN, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  _______,
-    _______, DE_PIPE, DE_BSLS, DE_AMPR, DE_TILD, XXXXXXX, XXXXXXX, KC_HOME, KC_BSPC, KC_DEL,  XXXXXXX, _______,
+    _______, DE_PIPE, DE_BSLS, DE_AMPR, DE_TILD, XXXXXXX, XXXXXXX, KC_HOME, KC_BSPC, KC_DEL,  KC_SPC,  _______,
     XXXXXXX, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
@@ -100,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_FN] = LAYOUT_planck_grid(
     KC_VOLU, KC_MPRV, GAMING,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
     KC_VOLD, KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F4,   KC_F5,   KC_F6,   KC_F11,  _______,
-    KC_MUTE, KC_MPLY, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F12,
+    KC_MUTE, KC_MPLY, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F12,  _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, MO(_RESET)
   ),
 
