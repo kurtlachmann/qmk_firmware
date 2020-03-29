@@ -181,6 +181,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_TAB);
             }
             return true;
+        case KC_LSFT:
+            if (record->event.pressed) {
+                if (keyboard_report->mods & MOD_BIT(KC_RSFT)) {
+                    // Enable Capslock by pressing both Shift keys
+                    press_key(KC_CAPS);
+                    return false;
+                }
+            }
+            return true;
+        case KC_RSFT:
+            if (record->event.pressed) {
+                if (keyboard_report->mods & MOD_BIT(KC_LSFT)) {
+                    // Enable Capslock by pressing both Shift keys
+                    press_key(KC_CAPS);
+                    return false;
+                }
+            }
+            return true;
     }
     return true;
 }
