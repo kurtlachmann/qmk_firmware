@@ -23,7 +23,7 @@
 #define MK_MOMENTARY_ACCEL
 
 // Default cursor speed
-#define MK_C_OFFSET_UNMOD 3 // Cursor offset per movement
+#define MK_C_OFFSET_UNMOD 8 // Cursor offset per movement
 #define MK_C_INTERVAL_UNMOD 16 // Time between cursor movements in ms
 
 // KC_ACL0
@@ -31,7 +31,7 @@
 #define MK_C_INTERVAL_0 16
 
 // KC_ACL1
-#define MK_C_OFFSET_1 8
+#define MK_C_OFFSET_1 3
 #define MK_C_INTERVAL_1 16
 
 // KC_ACL2
