@@ -34,6 +34,16 @@ enum custom_keycodes {
   MY_GRV,
   ALT_TAB,
   FKEYLCK,
+  MY_1,
+  MY_2,
+  MY_3,
+  MY_4,
+  MY_5,
+  MY_6,
+  MY_7,
+  MY_8,
+  MY_9,
+  MY_0,
 };
 
 // Layer switching
@@ -98,10 +108,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Numbers
   [_NUM] = LAYOUT_ortho_5x15(
     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, _______,
-    _______, DE_AT,   DE_QUOT, DE_DQOT, DE_CIRC, DE_PARA, KC_CAPS, KC_PSCR, KC_INS,  XXXXXXX, KC_P7,   KC_P8,   KC_P9,   DE_ASTR, _______,
-    ALT_TAB, DE_DLR,  DE_EXLM, DE_QST,  DE_PERC, DE_RING, _______, KC_NLCK, _______, DE_PLUS, KC_P4,   KC_P5,   KC_P6,   DE_EQL,  _______,
-    _______, DE_EURO, DE_GRV,  DE_ACUT, ALT_TAB, ALT_F4,  _______, _______, _______, DE_HASH, KC_P1,   KC_P2,   KC_P3,   DE_SLSH, _______,
-    XXXXXXX, _______, _______, _______, _______, _______, _______, _______, _______, KC_P0,   _______, _______, _______, _______, _______
+    _______, DE_AT,   DE_QUOT, DE_DQOT, DE_CIRC, DE_PARA, KC_CAPS, KC_PSCR, KC_INS,  XXXXXXX, MY_7,    MY_8,    MY_9,    DE_ASTR, _______,
+    ALT_TAB, DE_DLR,  DE_EXLM, DE_QST,  DE_PERC, DE_RING, _______, KC_NLCK, _______, DE_PLUS, MY_4,    MY_5,    MY_6,    DE_EQL,  _______,
+    _______, DE_EURO, DE_GRV,  DE_ACUT, ALT_TAB, ALT_F4,  _______, _______, _______, DE_HASH, MY_1,    MY_2,    MY_3,    DE_SLSH, _______,
+    XXXXXXX, _______, _______, _______, _______, _______, _______, _______, _______, MY_0,   _______, _______, _______, _______, _______
   ),
 
 
@@ -121,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_VOLU, KC_MPRV, GAMING,  XXXXXXX, XXXXXXX, XXXXXXX, KC_CAPS, KC_PSCR, KC_INS,  XXXXXXX, KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
     KC_VOLD, KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F4,   KC_F5,   KC_F6,   KC_F11,  _______,
     KC_MUTE, KC_MPLY, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F12,  _______,
-    _______, FKEYLCK, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, MO(_RESET)
+    _______, FKEYLCK, _______, _______, KC_NLCK, _______, _______, _______, _______, _______, _______, _______, _______, _______, MO(_RESET)
   ),
 
 
@@ -146,6 +156,24 @@ void press_key(uint16_t key) {
 }
 
 
+bool handle_custom_number(int regular_key, int keypad_key, keyrecord_t *record) {
+    if (IS_HOST_LED_ON(USB_LED_NUM_LOCK)) {
+        if (record->event.pressed) {
+            register_code(keypad_key);
+        } else {
+            unregister_code(keypad_key);
+        }
+    } else {
+        if (record->event.pressed) {
+            register_code(regular_key);
+        } else {
+            unregister_code(regular_key);
+        }
+    }
+    return false;
+}
+
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case MY_CIRC:
@@ -165,10 +193,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         case NUM:
-            // Ensure Numlock is activated
-            if (IS_HOST_LED_OFF(USB_LED_NUM_LOCK)) {
-                press_key(KC_NUMLOCK);
-            }
             // Was the key released?
             if (!record->event.pressed) {
                 if (is_alt_tabbing) {
@@ -219,6 +243,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             return true;
+        case MY_1:
+            return handle_custom_number(DE_1, KC_P1, record);
+        case MY_2:
+            return handle_custom_number(DE_2, KC_P2, record);
+        case MY_3:
+            return handle_custom_number(DE_3, KC_P3, record);
+        case MY_4:
+            return handle_custom_number(DE_4, KC_P4, record);
+        case MY_5:
+            return handle_custom_number(DE_5, KC_P5, record);
+        case MY_6:
+            return handle_custom_number(DE_6, KC_P6, record);
+        case MY_7:
+            return handle_custom_number(DE_7, KC_P7, record);
+        case MY_8:
+            return handle_custom_number(DE_8, KC_P8, record);
+        case MY_9:
+            return handle_custom_number(DE_9, KC_P9, record);
+        case MY_0:
+            return handle_custom_number(DE_0, KC_P0, record);
     }
     return true;
 }
