@@ -65,6 +65,7 @@ bool is_alt_tabbing = false;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
+// Base
 [_COLEMAK] = LAYOUT_planck_grid(
     KC_ESC,  DE_Q,    DE_W,    DE_F,    DE_P,    DE_B,    DE_J,    DE_L,    DE_U,    DE_Y,    KC_BSPC, KC_DEL,
     KC_TAB,  DE_A,    DE_R,    DE_S,    DE_T,    DE_G,    DE_M,    DE_N,    DE_E,    DE_I,    DE_O,    KC_ENT,
@@ -73,6 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 
+// Gaming (QWERTY)
 [_GAMING] = LAYOUT_planck_grid(
     KC_ESC,  DE_Q,    DE_W,    DE_E,    DE_R,    DE_T,    DE_Z,    DE_U,    DE_I,    DE_O,    DE_P,    KC_BSPC,
     KC_TAB,  DE_A,    DE_S,    DE_D,    DE_F,    DE_G,    DE_H,    DE_J,    DE_K,    DE_L,    DE_QUOT, KC_ENT,
@@ -84,8 +86,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Navigation
 [_NAV] = LAYOUT_planck_grid(
     _______, DE_LESS, DE_MORE, DE_LCBR, DE_RCBR, XXXXXXX, XXXXXXX, KC_APP,  KC_UP,   CTLPGUP, CTLPGDN, _______,
-    _______, DE_LBRC, DE_RBRC, DE_LPRN, DE_RPRN, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  _______,
-    _______, DE_PIPE, DE_BSLS, DE_AMPR, DE_TILD, XXXXXXX, XXXXXXX, KC_HOME, KC_BSPC, KC_DEL,  KC_SPC,  _______,
+    _______, DE_LBRC, DE_RBRC, DE_LPRN, DE_RPRN, XXXXXXX, KC_PGUP, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  _______,
+    _______, DE_PIPE, DE_BSLS, DE_AMPR, DE_TILD, XXXXXXX, KC_PGDN, KC_HOME, KC_BSPC, KC_DEL,  KC_SPC,  _______,
     XXXXXXX, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
@@ -112,15 +114,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_VOLD, KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F4,   KC_F5,   KC_F6,   KC_F11,  _______,
     KC_MUTE, KC_MPLY, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F12,  _______,
     _______, _______, _______, _______, KC_NLCK, _______, _______, _______, _______, _______, _______, MO(_RESET)
-  ),
+),
 
 
-  [_RESET] = LAYOUT_planck_grid(
+[_RESET] = LAYOUT_planck_grid(
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______
-  ),
+),
 
 };
 
